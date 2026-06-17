@@ -1,15 +1,7 @@
 from pydantic import BaseModel, EmailStr
-
+from typing import Annotated
+from annotated_types import MaxLen, MinLen
 
 class CreateUser(BaseModel):
-    """Schema for creating a new user."""
     email: EmailStr
-    name: str
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "email": "user@example.com",
-                "name": "John Doe"
-            }
-        }
+    name: Annotated[str, MinLen(1), MaxLen(20)]

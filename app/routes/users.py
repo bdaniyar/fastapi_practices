@@ -5,8 +5,7 @@ router = APIRouter(prefix="/users", tags=["users"])
 
 
 @router.post("")
-def create_user(user: CreateUser):
-    """Create a new user."""
+def create_user(user: CreateUser) -> dict:
     return {
         "Success": "User created successfully",
         "email": user.email,

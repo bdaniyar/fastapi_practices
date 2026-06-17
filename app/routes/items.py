@@ -1,4 +1,5 @@
-from fastapi import APIRouter
+from typing import Annotated
+from fastapi import APIRouter, Path 
 
 router = APIRouter(prefix="/items", tags=["items"])
 
@@ -16,6 +17,6 @@ def get_last_item():
 
 
 @router.get("/{item_id}")
-def get_item(item_id: int):
+def get_item(item_id: Annotated[int, Path(gt=1, lt=100000)]):
     """Get item by ID."""
     return {"item_id": item_id}
