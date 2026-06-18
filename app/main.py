@@ -1,5 +1,15 @@
 from fastapi import FastAPI
 from app.routes import items, users
+import uvicorn
+from db import Base, db_helper, DatabaseHelper
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with db_helper.engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+    
 
 app = FastAPI(
     title="My API",
