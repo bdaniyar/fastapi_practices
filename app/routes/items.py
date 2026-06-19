@@ -17,6 +17,6 @@ def get_last_item():
 
 
 @router.get("/{item_id}")
-def get_item(item_id: Annotated[int, Path(gt=1, lt=100000)]):
+def get_item(item_id: Annotated[int, Path(ge=1, lt=100000)]):
     """Get item by ID."""
     return {"item_id": item_id}

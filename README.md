@@ -9,9 +9,15 @@ project/
 ├── app/                          # Основной пакет приложения
 │   ├── __init__.py              # Инициализация пакета
 │   ├── main.py                  # Точка входа (главный файл)
-│   ├── models/                  # Модели данных
+│   ├── core/                    # Настройки, база данных и модели SQLAlchemy
 │   │   ├── __init__.py
-│   │   └── user.py
+│   │   ├── base.py
+│   │   ├── config.py
+│   │   ├── db_helper.py
+│   │   └── models/
+│   │       ├── __init__.py
+│   │       ├── product.py
+│   │       └── user.py
 │   ├── schemas/                 # Pydantic schemas (валидация)
 │   │   ├── __init__.py
 │   │   └── user.py

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.routes import items, users
-from app.db import Base, db_helper, DatabaseHelper
-from app import models
+from app.core import Base, db_helper
+from app.core import models
 from contextlib import asynccontextmanager
 
 @asynccontextmanager

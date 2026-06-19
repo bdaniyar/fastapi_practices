@@ -1,7 +1,7 @@
 __all__ = [
     "Base",
     "DatabaseHelper",
-    "db_helper"
+    "db_helper",
 ]
 
 from .base import Base
