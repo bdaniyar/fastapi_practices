@@ -55,3 +55,11 @@ async def update_product_partial(
         product_update=product_update,
         partial=True,
     )
+
+@router.delete("/{product_id}/", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_product(session: SessionDep, product: ProductDep) -> None:
+    await crud.delete_product(session=session, product=product)
+
+@router.delete("/", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_all_products(session: SessionDep) -> None:
+    await crud.delete_all_products(session=session)

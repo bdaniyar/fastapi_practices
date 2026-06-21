@@ -41,3 +41,11 @@ async def update_product(
 async def delete_product(session: AsyncSession, product: Product) -> None:
     await session.delete(product)
     await session.commit()
+
+async def delete_all_products(session: AsyncSession) -> None:
+    stmt = select(Product)
+    result: Result = await session.execute(stmt)
+    products = result.scalars().all()
+    for product in products:
+        await session.delete(product)
+    await session.commit()
