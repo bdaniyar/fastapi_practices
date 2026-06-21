@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from app.api_v1.products import views as product_views
 from app.routes import items, users
 from app.core import Base, db_helper
 from app.core import models
@@ -25,7 +24,6 @@ app = FastAPI(
 # Include routers
 app.include_router(items.router)
 app.include_router(users.router)
-app.include_router(product_views.router)
 app.include_router(router=router_v1, prefix=settings.api_v1_prefix)
 
 
