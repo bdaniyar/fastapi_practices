@@ -5,5 +5,5 @@ from app.core.base import Base
 
 
 class User(Base):
-    email: Mapped[str] = mapped_column(String(255), unique=True, index=True)
-    name: Mapped[str] = mapped_column(String(20))
+    username: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
+
