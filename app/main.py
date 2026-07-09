@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from app.routes import items, users
-from app.core import Base, db_helper
 from app.core import models
 from contextlib import asynccontextmanager
 from app.api_v1 import router as router_v1
@@ -9,8 +8,6 @@ from app.core.config import settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    async with db_helper.engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
     yield
     
 
